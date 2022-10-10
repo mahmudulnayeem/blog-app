@@ -9,7 +9,7 @@ const Tags = () => {
         <meta name="description" content="Blogs Tags" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      tags
+      Tags will add later
     </Layout>
   )
 }

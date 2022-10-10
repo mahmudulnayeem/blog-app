@@ -1,12 +1,13 @@
-import { Text, TypographyStylesProvider } from "@mantine/core";
+import { Divider, Text, TypographyStylesProvider } from "@mantine/core";
 import Layout from "../../../components/Layout";
 const Blog = ({ data }: { data: any }) => {
-  const blog = data[0];
+  const blog: any = data[0];
   return (
     <Layout>
-      <Text weight={800} size={24}>
+      <Text weight={800} size={24} align="center">
         {blog?.title}
       </Text>
+      <Divider mt="sm" mb="lg" />
       <TypographyStylesProvider>
         <div
           dangerouslySetInnerHTML={{
