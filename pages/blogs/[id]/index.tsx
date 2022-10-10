@@ -11,7 +11,7 @@ const Blog = ({ data }: { data: any }) => {
       <TypographyStylesProvider>
         <div
           dangerouslySetInnerHTML={{
-            __html: blog?.description,
+            __html: blog?.blogText,
           }}
         />
       </TypographyStylesProvider>
