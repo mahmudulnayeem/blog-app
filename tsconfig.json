@@ -15,6 +15,14 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "lib/mongodb.js",
+    "pages/api/addBlog.js",
+    "pages/api/blogById.js",
+    "pages/api/blogs.js"
+  ],
   "exclude": ["node_modules"]
 }

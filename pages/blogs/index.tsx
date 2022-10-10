@@ -20,7 +20,9 @@ const Blogs = ({ data }: { data: any }) => {
 
 export default Blogs;
 export async function getServerSideProps(context: any) {
-  const response = await fetch(`http://localhost:3000/api/blogs`);
+  const response = await fetch(
+    `https://blog-app-rouge-delta.vercel.app/api/blogs`
+  );
   const data = await response.json();
 
   return {

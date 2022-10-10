@@ -2,14 +2,8 @@ import { ObjectId } from "mongodb";
 import { connectToDatabase } from "../../lib/mongodb";
 
 export default async function handler(
-  request: { query: any },
-  response: {
-    status: (arg0: number) => {
-      (): any;
-      new (): any;
-      json: { (arg0: any): void; new (): any };
-    };
-  }
+  request,
+  response
 ) {
   const { database } = await connectToDatabase();
   const collection = database.collection(process.env.NEXT_ATLAS_COLLECTION);
