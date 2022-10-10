@@ -1,5 +1,6 @@
 import {
   Burger,
+  ColorScheme,
   Container,
   createStyles,
   Group,
@@ -7,11 +8,11 @@ import {
   Paper,
   Transition,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useLocalStorage } from "@mantine/hooks";
 import Link from "next/link";
 import { useState } from "react";
-// import { MantineLogo } from '@mantine/ds';
-
+import { BsMoonStars } from "react-icons/bs";
+import { IoSunnyOutline } from "react-icons/io5";
 const HEADER_HEIGHT = 60;
 
 const useStyles = createStyles((theme) => ({
@@ -101,6 +102,13 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState("/");
   const { classes, cx } = useStyles();
+  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+    key: "mantine-color-scheme",
+    defaultValue: "light",
+    getInitialValueInEffect: true,
+  });
+  const toggleColorScheme = () =>
+    setColorScheme(colorScheme === "dark" ? "light" : "dark");
 
   const items = links.map((link) => (
     <Link key={link.label} href={link.link} passHref>
@@ -142,6 +150,17 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
             </Paper>
           )}
         </Transition>
+        {colorScheme === "dark" ? (
+          <IoSunnyOutline
+            style={{ cursor: "pointer" }}
+            onClick={toggleColorScheme}
+          />
+        ) : (
+          <BsMoonStars
+            style={{ cursor: "pointer" }}
+            onClick={toggleColorScheme}
+          />
+        )}
       </Container>
     </Header>
   );

@@ -1,9 +1,14 @@
-import { MantineProvider } from "@mantine/core";
+import { ColorScheme, MantineProvider } from "@mantine/core";
+import { useLocalStorage } from "@mantine/hooks";
 import { AppProps } from "next/app";
 import Head from "next/head";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
+  const [colorScheme] = useLocalStorage<ColorScheme>({
+    key: "mantine-color-scheme",
+    getInitialValueInEffect: true,
+  });
 
   return (
     <>
@@ -20,7 +25,7 @@ export default function App(props: AppProps) {
         withNormalizeCSS
         theme={{
           /** Put your mantine theme override here */
-          colorScheme: "light",
+          colorScheme: colorScheme,
         }}
       >
         <Component {...pageProps} />

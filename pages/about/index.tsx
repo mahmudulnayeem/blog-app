@@ -1,4 +1,12 @@
-import { Box, Center, Divider, SimpleGrid, Text } from "@mantine/core";
+import {
+  Box,
+  Center,
+  ColorScheme,
+  Divider,
+  SimpleGrid,
+  Text,
+} from "@mantine/core";
+import { useLocalStorage } from "@mantine/hooks";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,19 +16,22 @@ import Layout from "../../components/Layout";
 const socialLinks = [
   {
     link: "https://github.com/hasannayeem71",
-    icon: <BsGithub size={22} />,
+    icon: BsGithub,
   },
   {
     link: "https://www.facebook.com/hasannayeem701/",
-    icon: <BsFacebook size={22} />,
+    icon: BsFacebook,
   },
   {
     link: "https://twitter.com/Mahmudu44103704",
-    icon: <BsTwitter size={22} />,
+    icon: BsTwitter,
   },
 ];
 
 const About = () => {
+  const [colorScheme] = useLocalStorage<ColorScheme>({
+    key: "mantine-color-scheme",
+  });
   return (
     <Layout>
       <Head>
@@ -67,7 +78,9 @@ const About = () => {
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: "black" }}
+                  style={{
+                    color: colorScheme === "dark" ? "#8c8fa3" : "black",
+                  }}
                 >
                   The Esporst Club
                 </a>
@@ -87,7 +100,12 @@ const About = () => {
                     rel="noopener noreferrer"
                     style={{ color: "black", margin: "5px" }}
                   >
-                    {social.icon}
+                    {
+                      <social.icon
+                        size={22}
+                        color={colorScheme === "dark" ? "#8c8fa3" : "black"}
+                      />
+                    }
                   </a>
                 </Link>
               ))}
