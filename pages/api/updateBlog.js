@@ -2,7 +2,7 @@ import { ObjectId } from "mongodb";
 import NextCors from 'nextjs-cors';
 import { connectToDatabase } from "../../lib/mongodb";
 export default async function handler(request, response) {
-  await NextCors(req, res, {
+  await NextCors(request, response, {
   
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     origin: '*',
