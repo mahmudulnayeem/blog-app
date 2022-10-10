@@ -116,7 +116,6 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
         onClick={(event) => {
           // event.preventDefault();
           setActive(link.link);
-          console.log(link.link);
           close();
         }}
         className={cx(classes.link, {
