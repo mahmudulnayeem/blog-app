@@ -2,7 +2,6 @@ import { Divider, Text, TypographyStylesProvider } from "@mantine/core";
 import Layout from "../../../components/Layout";
 const Blog = ({ data }: { data: any }) => {
   const blog: any = data[0];
-  console.log(data);
   return (
     <Layout>
       <Text weight={800} size={24} align="center">
